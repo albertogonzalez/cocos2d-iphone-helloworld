@@ -13,6 +13,9 @@
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
 
+#define SPRITE_Z	1
+#define SPRITE_TAG	1
+
 #pragma mark - HelloWorldLayer
 
 // HelloWorldLayer implementation
@@ -26,6 +29,7 @@
 	
 	// 'layer' is an autorelease object.
 	HelloWorldLayer *layer = [HelloWorldLayer node];
+	layer.isTouchEnabled = YES;
 	
 	// add layer as a child to scene
 	[scene addChild: layer];
@@ -71,7 +75,7 @@
 		[sprite runAction:sequence];
 
 		// add the sprite as a child to this Layer
-		[self addChild: sprite];
+		[self addChild: sprite z:SPRITE_Z tag:SPRITE_TAG];
 		
 	}
 	return self;
@@ -88,17 +92,23 @@
 	[super dealloc];
 }
 
-#pragma mark GameKit delegate
-
--(void) achievementViewControllerDidFinish:(GKAchievementViewController *)viewController
+//- (void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+//- (void) ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+//- (void) ccTouchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+- (void) ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-	[[app navController] dismissModalViewControllerAnimated:YES];
+	UITouch *touch = [touches anyObject];
+	CGPoint touchLocation = [touch locationInView:touch.view];
+	CGPoint touchLocationGL = [[CCDirector sharedDirector] convertToGL:touchLocation];
+	
+	CCSprite *sprite = (CCSprite*)[self getChildByTag:SPRITE_TAG];
+	if (sprite) {
+		[sprite stopAllActions];
+		CCMoveTo *action = [CCMoveTo actionWithDuration:1 position:touchLocationGL];
+		[sprite runAction:action];
+	}
+	
 }
 
--(void) leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
-{
-	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-	[[app navController] dismissModalViewControllerAnimated:YES];
-}
+
 @end
