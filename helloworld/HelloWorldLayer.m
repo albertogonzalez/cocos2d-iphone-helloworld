@@ -41,15 +41,36 @@
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) ) {
 		
-		CCSprite *sprite = [CCSprite spriteWithFile:@"powered.png"];
-		
 		// ask director for the window size
 		CGSize size = [[CCDirector sharedDirector] winSize];
-	
-		// position the label on the center of the screen
+		
+		CCSprite *sprite = [CCSprite spriteWithFile:@"powered.png"];
+		sprite.scale = 0.3;
+		
+/*		// position the sprite on the center of the screen
 		sprite.position =  ccp( size.width /2 , size.height/2 );
 		
-		// add the label as a child to this Layer
+		CCMoveTo *action = [CCMoveTo actionWithDuration:10 position:ccp(0,0)];
+		[sprite runAction:action];
+		CCBlink *blink = [CCBlink actionWithDuration:10 blinks:20];
+		[sprite runAction:blink];
+*/
+		sprite.position =  ccp( 0 , size.height/2 );
+/*
+		CCMoveTo *move = [CCMoveTo actionWithDuration:5 position:ccp(size.width /2, sprite.position.y)];
+		[sprite runAction:move];
+		CCRotateBy *rot = [CCRotateBy actionWithDuration:5 angle:720];
+		[sprite runAction:rot];
+*/
+
+		CCMoveTo *move = [CCMoveTo actionWithDuration:5 position:ccp(size.width /2, sprite.position.y)];
+		CCRotateBy *rot = [CCRotateBy actionWithDuration:5 angle:720];
+		CCBlink *blink = [CCBlink actionWithDuration:5 blinks:10];
+		CCSpawn *entry = [CCSpawn actions:move, rot, nil];
+		CCSequence *sequence = [CCSequence actions:entry, blink, nil];
+		[sprite runAction:sequence];
+
+		// add the sprite as a child to this Layer
 		[self addChild: sprite];
 		
 	}
