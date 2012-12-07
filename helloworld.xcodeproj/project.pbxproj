@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		155FCF14167151310018677A /* powered.png in Resources */ = {isa = PBXBuildFile; fileRef = 155FCF13167151310018677A /* powered.png */; };
 		156D5F6E1670DEDD00CCC281 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 156D5F6D1670DEDD00CCC281 /* QuartzCore.framework */; };
 		156D5F701670DEDD00CCC281 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 156D5F6F1670DEDD00CCC281 /* OpenGLES.framework */; };
 		156D5F721670DEDD00CCC281 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 156D5F711670DEDD00CCC281 /* OpenAL.framework */; };
@@ -136,6 +137,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		155FCF13167151310018677A /* powered.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powered.png; sourceTree = "<group>"; };
 		156D5F691670DEDD00CCC281 /* helloworld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = helloworld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		156D5F6D1670DEDD00CCC281 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		156D5F6F1670DEDD00CCC281 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -472,6 +474,7 @@
 		156D5F801670DEDD00CCC281 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				155FCF13167151310018677A /* powered.png */,
 				156D5F811670DEDD00CCC281 /* Default.png */,
 				156D5F831670DEDD00CCC281 /* Default-Landscape~ipad.png */,
 				156D5F851670DEDD00CCC281 /* fps_images.png */,
@@ -896,6 +899,7 @@
 				156D5F961670DEDD00CCC281 /* Icon@2x.png in Resources */,
 				156D5F991670DEDD00CCC281 /* iTunesArtwork in Resources */,
 				156D60D71670DEDF00CCC281 /* ChangeLog in Resources */,
+				155FCF14167151310018677A /* powered.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1113,6 +1117,7 @@
 				156D61041670DEDF00CCC281 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
